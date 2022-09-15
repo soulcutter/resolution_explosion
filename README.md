@@ -23,16 +23,16 @@ While removing the `rack` dependency works, pinning it to `'< 3.0.0'` also works
 
 I think this behavior is not a linear multiplier, but rather exponential based on my (unsharable) work project taking 100k steps (vs 250 steps). This sample reproduction only hits 800 steps (vs 100 steps).
 
-I feel like this could be a pathological behavior that you'd be unlikely to encounter except that `rack` is a common dependency and there must be a combo of projects that are permissive and pinned to `< 3.0.0`
+This could be a pathological behavior that you'd be unlikely to encounter - except that `rack` is a common dependency and there are surely a combo of projects that are permissive and projects that are pinned to `< 3.0.0`. In other words: this may or may not be acceptable behavior.
 
-
-## Usage
+## How to reproduce
 
 ```
 DEBUG_RESOLVER=1 bundle lock --print | grep "Finished resolution"
 ```
 
-Do this WITH and WITHOUT the gemspec having rack as a dev dependency. This reproduction is not as extreme as what I saw, but still significant:
+Do this WITH and WITHOUT the `resolution_explosion.gemspec` having rack as a dev dependency (it's commented-out by default in this repo).
+This reproduction is not as extreme as what I saw in the private project, but still illustrative:
 
 With rack:
 ```
