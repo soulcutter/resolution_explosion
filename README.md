@@ -4,7 +4,7 @@ Ran into a strange issue at work where resolving gems in a bundle (not installin
 
 
 ```
-BUNDLER: Finished resolution (98145 steps) (Took 212.483564 seconds) (2022-09-15 13:48:59 -0400) this is where we started. That's an absurd amount of steps to resolve (and obviously a lot of time).
+BUNDLER: Finished resolution (98145 steps) (Took 212.483564 seconds) (2022-09-15 13:48:59 -0400)
 ```
 
 this was a gem, and had a dev dependency on rack AND a non-dev dependency on rails. Seems like rails will include rack anyway. Removing `s.add_development_dependency('rack')` changed the behavior like so:
