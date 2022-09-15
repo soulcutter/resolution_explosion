@@ -21,6 +21,8 @@ This same behavior has been verified on bundler versions verified same behavior 
 
 While removing the `rack` dependency works, pinning it to `'< 3.0.0'` also works.
 
+I think this behavior is not a linear multiplier, but rather exponential based on my (unsharable) work project taking 100k steps (vs 250 steps). This sample reproduction only hits 800 steps (vs 100 steps).
+
 I feel like this could be a pathological behavior that you'd be unlikely to encounter except that `rack` is a common dependency and there must be a combo of projects that are permissive and pinned to `< 3.0.0`
 
 
