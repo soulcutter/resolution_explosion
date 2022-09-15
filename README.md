@@ -17,6 +17,7 @@ BUNDLER: Finished resolution (289 steps) (Took 1.206765 seconds) (2022-09-15 14:
 
 rack 3.0.0 was released Sept 6th 2022 (today is Sept 15). This may be causing dependency resolution dead end from libraries that have not-yet been updated. Still, the explosion looks exponential and not what I would expect.
 
+This same behavior has been verified on bundler versions verified same behavior on `2.3.11` and `2.3.22`
 
 ## Usage
 
