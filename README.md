@@ -19,6 +19,11 @@ rack 3.0.0 was released Sept 6th 2022 (today is Sept 15). This may be causing de
 
 This same behavior has been verified on bundler versions verified same behavior on `2.3.11` and `2.3.22`
 
+While removing the `rack` dependency works, pinning it to `'< 3.0.0'` also works.
+
+I feel like this could be a pathological behavior that you'd be unlikely to encounter except that `rack` is a common dependency and there must be a combo of projects that are permissive and pinned to `< 3.0.0`
+
+
 ## Usage
 
 ```
