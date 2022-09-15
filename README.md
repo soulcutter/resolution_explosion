@@ -13,15 +13,17 @@ this was a gem, and had a dev dependency on rack AND a non-dev dependency on rai
 BUNDLER: Finished resolution (289 steps) (Took 1.206765 seconds) (2022-09-15 14:11:36 -0400)
 ```
 
+This same behavior has been verified on bundler versions `2.3.11` and `2.3.22`
+
 ## Theory
 
 rack 3.0.0 was released Sept 6th 2022 (today is Sept 15). This may be causing dependency resolution dead end from libraries that have not-yet been updated. Still, the explosion looks exponential and not what I would expect.
 
-This same behavior has been verified on bundler versions verified same behavior on `2.3.11` and `2.3.22`
 
-While removing the `rack` dependency works, pinning it to `'< 3.0.0'` also works.
+Removing the `rack` dependency reduces the resolution steps dramatically.
+Pinning `rack` to `'< 3.0.0'` also reduces the resolution steps dramatically.
 
-I think this behavior is not a linear multiplier, but rather exponential based on my (unsharable) work project taking 100k steps (vs 250 steps). This sample reproduction only hits 800 steps (vs 100 steps).
+I think this behavior is exponential (not a linear multiplier) based on my (unsharable) work project taking 100k steps (vs 250 steps). This sample reproduction only hits 800 steps (vs 100 steps).
 
 This could be a pathological behavior that you'd be unlikely to encounter - except that `rack` is a common dependency and there are surely a combo of projects that are permissive and projects that are pinned to `< 3.0.0`. In other words: this may or may not be acceptable behavior.
 
